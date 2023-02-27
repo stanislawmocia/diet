@@ -55,7 +55,7 @@ export class DietsComponent {
   }
 
   public parseTextToIngredient(ingredient: Ingredient): Ingredient {
-    const regex = /^([\w\s,.\(\)\-AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+) - (\d+(\.\d+)?) g \((\d+(\.\d+)?) x ([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+)\)$/;
+    const regex = /^([\w\s,.\(\)\-\%\dAaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+) - (\d+(\.\d+)?) g \((\d+(\.\d+)?) x ([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+)\)$/;
     const match = ingredient.fullText.match(regex);
 
     if (!match) {
