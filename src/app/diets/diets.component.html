@@ -1,0 +1,32 @@
+<div class="flex flex-row justify-around mt-3">
+  <div class="flex-col border-r-2 w-full text-center" *ngFor="let diet of diets">
+    <div class="flex flex-col">
+      <span class="text-lg font-bold">{{diet.weekDay}}</span>
+      <button class="rounded-lg bg-green-500 hover:bg-green-700 text-white mx-2" (click)="addMeal(diet)">
+        Add Meal
+      </button>
+    </div>
+
+    <div class="flex-col mt-4" *ngFor="let meal of diet.meal">
+      <div class="flex-row">
+        <input class="font-bold w-3/5" [(ngModel)]="meal.name" />
+        <button class="rounded-lg bg-red-500 hover:bg-red-700 text-white mx-2 w-1/5"
+          (click)="deleteMeal(diet, meal.order)">
+          -
+        </button>
+      </div>
+      <div class="border-b-2 mx-1 mt-3">
+        <button class="rounded-md bg-green-300 hover:bg-green-500 px-2 text-white"
+          (click)="addIngredient(meal)">+</button>
+        <div class="my-2" *ngFor="let ingredient of meal.ingredients; let index = index">
+          <input class="border rounded-sm mr-2 text-xs w-9/12" [(ngModel)]="ingredient.fullText"
+            (keydown.enter)="parseTextToIngredient(ingredient); " />
+          <button class="rounded-sm bg-red-200 hover:bg-red-500 text-white w-2/12"
+            (click)="deleteIngredient(meal,index)">
+            x
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
