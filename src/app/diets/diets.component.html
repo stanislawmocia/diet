@@ -9,8 +9,9 @@
 
     <div class="flex-col mt-4" *ngFor="let meal of diet.meal">
       <div class="flex-row">
-        <input class="font-bold w-3/5" [(ngModel)]="meal.name" />
-        <button class="rounded-lg bg-red-500 hover:bg-red-700 text-white mx-2 w-1/5"
+        <input class="w-1/12" type="checkbox" [(ngModel)]="meal.selected" />
+        <input class="font-bold w-6/12 ml-1" [(ngModel)]="meal.name" />
+        <button class="rounded-lg bg-red-500 hover:bg-red-700 text-white mx-2 w-3/12"
           (click)="deleteMeal(diet, meal.order)">
           -
         </button>
@@ -20,7 +21,7 @@
           (click)="addIngredient(meal)">+</button>
         <div class="my-2" *ngFor="let ingredient of meal.ingredients; let index = index">
           <input class="border rounded-sm mr-2 text-xs w-9/12" [(ngModel)]="ingredient.fullText"
-            (keydown.enter)="parseTextToIngredient(ingredient); " />
+            (focusout)="parseTextToIngredient(ingredient); " />
           <button class="rounded-sm bg-red-200 hover:bg-red-500 text-white w-2/12"
             (click)="deleteIngredient(meal,index)">
             x

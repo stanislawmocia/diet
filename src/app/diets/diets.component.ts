@@ -26,7 +26,8 @@ export class DietsComponent {
       let meal = {
         name: 'New meal',
         order: diet.meal.length + 1,
-        ingredients: []
+        ingredients: [],
+        selected: false
       } as Meal;
       this.addIngredient(meal);
       diet.meal.push(meal);
@@ -54,7 +55,7 @@ export class DietsComponent {
   }
 
   public parseTextToIngredient(ingredient: Ingredient): Ingredient {
-    const regex = /^([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+) - (\d+(\.\d+)?) g \((\d+(\.\d+)?) x ([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+)\)$/;
+    const regex = /^([\w\s,.\(\)\-AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+) - (\d+(\.\d+)?) g \((\d+(\.\d+)?) x ([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+)\)$/;
     const match = ingredient.fullText.match(regex);
 
     if (!match) {

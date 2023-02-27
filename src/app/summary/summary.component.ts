@@ -13,20 +13,23 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIngredients();
+    localStorage.setItem('dietPersons', this.dietService.exportPersonToJson());
   }
 
   private getIngredients(): void {
     this.dietService.getPersons().forEach(p => {
       p.diet.forEach(d => {
         d.meal.forEach(m => {
-          m.ingredients.forEach(i => {
-            let ingredien = this.ingrediens.find(ing => ing.name === i.name);
-            if (!ingredien) {
-              this.ingrediens.push(i);
-            } else {
-              ingredien.quantity += i.quantity;
-            }
-          });
+          if (m.selected) {
+            m.ingredients.forEach(i => {
+              let ingredien = this.ingrediens.find(ing => ing.name === i.name);
+              if (!ingredien) {
+                this.ingrediens.push(i);
+              } else {
+                ingredien.quantity += i.quantity;
+              }
+            });
+          }
         });
       });
     });

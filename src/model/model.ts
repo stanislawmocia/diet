@@ -10,6 +10,7 @@ export interface Diet {
 }
 
 export interface Meal {
+    selected: boolean,
     name: string,
     order: number,
     ingredients: Ingredient[]
