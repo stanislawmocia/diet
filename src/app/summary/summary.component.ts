@@ -20,13 +20,16 @@ export class SummaryComponent implements OnInit {
     this.dietService.getPersons().forEach(p => {
       p.diet.forEach(d => {
         d.meal.forEach(m => {
+          console.log('test');
           if (m.selected) {
             m.ingredients.forEach(i => {
               let ingredien = this.ingrediens.find(ing => ing.name === i.name);
               if (!ingredien) {
                 this.ingrediens.push(i);
               } else {
+                console.log(ingredien);
                 ingredien.quantity += i.quantity;
+                ingredien.numberOf += i.numberOf;
               }
             });
           }

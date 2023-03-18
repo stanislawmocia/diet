@@ -8,6 +8,7 @@ import { PersonsComponent } from './persons/persons.component';
 import { DietsComponent } from './diets/diets.component';
 import { FormsModule } from '@angular/forms';
 import { ImportExportPanelComponent } from './import-export-panel/import-export-panel.component';
+import { SortPipePipe } from '../service/sort-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ImportExportPanelComponent } from './import-export-panel/import-export-
     SummaryComponent,
     PersonsComponent,
     DietsComponent,
-    ImportExportPanelComponent
+    ImportExportPanelComponent,
+    SortPipePipe
   ],
   imports: [
     BrowserModule,

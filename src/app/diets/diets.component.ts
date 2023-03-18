@@ -45,7 +45,9 @@ export class DietsComponent {
     const newIngredient: Ingredient = {
       name: '',
       quantity: 0,
-      unit: ''
+      unit: '',
+      numberOf: 0,
+      unitOf: ''
     } as Ingredient;
     meal.ingredients.push(newIngredient);
   }
@@ -54,18 +56,13 @@ export class DietsComponent {
     meal.ingredients.splice(ingredientIndex, 1);
   }
 
-  public parseTextToIngredient(ingredient: Ingredient): Ingredient {
-    const regex = /^([\w\s,.\(\)\-\%\dAaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+) - (\d+(\.\d+)?) g \((\d+(\.\d+)?) x ([\w\s,AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+)\)$/;
-    const match = ingredient.fullText.match(regex);
-
-    if (!match) {
-      throw new Error(`Invalid text format: ${ingredient.fullText}`);
-    }
-
-    ingredient.name = match[1].trim();
-    ingredient.quantity = parseFloat(match[4]);
-    ingredient.unit = match[6].trim();
-
-    return ingredient;
+  public parseTextToIngredient(input: Ingredient): Ingredient {
+    const ingredient = this.dietService.parseTextToIngredient(input);
+    input.name = ingredient.name;
+    input.quantity = ingredient.quantity;
+    input.unit = ingredient.unit;
+    input.numberOf = ingredient.numberOf;
+    input.unitOf = ingredient.unitOf;
+    return input;
   }
 }

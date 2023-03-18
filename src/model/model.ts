@@ -20,7 +20,9 @@ export interface Ingredient {
     fullText: string,
     name: string,
     quantity: number,
-    unit: string
+    unit: string,
+    numberOf: number,
+    unitOf: string
 }
 
 export enum WeekDay {
